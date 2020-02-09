@@ -1,0 +1,32 @@
+[
+    {
+        "model": "likes.post",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "date_created": "2018-12-03",
+            "subject": "This is a first post",
+            "body": "Not much to say here",
+            "author": "Just Tim",
+            "date_published": "2018-12-04",
+            "post_type": "p",
+            "likes": 6,
+            "dislikes": 8
+        }
+    },
+    {
+        "model": "likes.post",
+        "pk": 2,
+        "fields": {
+            "id": 1,
+            "date_created": "2018-12-08",
+            "subject": "This is a first new",
+            "body": "Not much to say here",
+            "author": "Just Tim",
+            "date_published": "2018-12-09",
+            "post_type": "n",
+            "likes": 6,
+            "dislikes": 8
+        }
+}
+]

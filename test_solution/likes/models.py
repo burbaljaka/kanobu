@@ -10,6 +10,18 @@ class Post(models.Model):
     likes = models.BigIntegerField(null=True, blank=True, default=0)
     dislikes = models.BigIntegerField(null=True, blank=True, default=0)
 
+    POST_TYPES= (
+        ('p', 'Post'),
+        ('n', 'News')
+    )
+
+    post_type = models.CharField(max_length=1,
+                                 choices=POST_TYPES,
+                                 blank=True,
+                                 null=True,
+                                 help_text='Is it news or post?',
+                                 default='n')
+
     def __str__(self):
         return self.subject
 
