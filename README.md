@@ -5,6 +5,10 @@
 При работе на локальной машине для работы с запущенным проектом доступны команды:
  - http://127.0.0.1:8000/likes/allposts/ - просмотреть всех новостей и постов (метод GET)
  - http://127.0.0.1:8000/likes/allposts/int/ - просмотреть 1 запись, у которой id = int (метод GET)
- - http://127.0.0.1:8000/likes/allposts/int/action/ - для записи, у которой id = int (метод POST):
- - - поставить like, если action = like
- - - поставить dislike, если action = dislike
+ - http://127.0.0.1:8000/likes/allposts/int/action/ - для записи, у которой id = int (метод POST, рекомендую использовать postman):
+   - поставить like, если action = like
+   - поставить dislike, если action = dislike
+ Например, http://127.0.0.1:8000/likes/allposts/2/like/
+           http://127.0.0.1:8000/likes/allposts/1/dislike/
+           
+В проект при старте записывается 2 тестовых объекта для немедленного тестирования
