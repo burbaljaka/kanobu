@@ -17,7 +17,7 @@ class ViewPosts(generics.ListAPIView):
 
         return Response(PostViewSerializer(post).data)
 
-class ViewOnePost(generics.RetrieveUpdateDestroyAPIView):
+class ViewOnePost(generics.RetrieveAPIView):
     serializer_class = PostViewSerializer
     queryset = Post.objects.all()
 

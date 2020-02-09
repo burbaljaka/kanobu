@@ -18,7 +18,7 @@
         "model": "likes.post",
         "pk": 2,
         "fields": {
-            "id": 1,
+            "id": 2,
             "date_created": "2018-12-08",
             "subject": "This is a first new",
             "body": "Not much to say here",
@@ -26,7 +26,7 @@
             "date_published": "2018-12-09",
             "post_type": "n",
             "likes": 6,
-            "dislikes": 8
+            "dislikes": 1
         }
 }
 ]
