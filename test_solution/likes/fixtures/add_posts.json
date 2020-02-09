@@ -28,5 +28,17 @@
             "likes": 6,
             "dislikes": 1
         }
+    },{
+        "model": "likes.comment",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "author": "Unknown",
+            "body": "I like this post",
+            "likes": 0,
+            "dislikes": 1,
+            "post": 1,
+            "date_created": "2018-12-09"
+        }
 }
 ]

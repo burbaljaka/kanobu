@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import ViewPosts,ViewOnePost, MarkPost
+from .views import ViewPosts,ViewOnePost, SetMark
 
 urlpatterns = [
-    path('allposts/', ViewPosts.as_view()),
-    path('allposts/<pk>/', ViewOnePost.as_view()),
-    path('allposts/<pk>/<action>/', MarkPost.as_view())
+    path('posts/', ViewPosts.as_view()),
+    path('posts/<pk>/', ViewOnePost.as_view()),
+    path('<entity>/<pk>/<action>/', SetMark.as_view()),
 ]

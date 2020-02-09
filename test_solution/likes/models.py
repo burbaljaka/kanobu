@@ -30,6 +30,20 @@ class Post(models.Model):
         return self.likes + self.dislikes
 
 
+class Comment(models.Model):
+    author = models.CharField(max_length=50, blank=True, null=True)
+    body = models.CharField(max_length=2000, blank=True, null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    likes = models.BigIntegerField(null=True, blank=True, default=0)
+    dislikes = models.BigIntegerField(null=True, blank=True, default=0)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.body[:20]
+
+    @property
+    def all_marks(self):
+        return self.likes + self.dislikes
 
 
 

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics, viewsets
 from rest_framework.response import Response
-from .serializers import PostViewSerializer, PostCreateSerializer
-from .models import Post
+from .serializers import PostViewSerializer, PostCreateSerializer, CommentSerializer
+from .models import Post, Comment
 
 class ViewPosts(generics.ListAPIView):
     serializer_class = PostViewSerializer
@@ -21,24 +21,37 @@ class ViewOnePost(generics.RetrieveAPIView):
     serializer_class = PostViewSerializer
     queryset = Post.objects.all()
 
-class MarkPost(generics.UpdateAPIView):
-    def get(self, request, pk, action=None):
+class SetMark(generics.UpdateAPIView):
+    def get(self, request, entity=None, pk=None, action=None):
         serializer_class = PostViewSerializer
-        post = Post.objects.get(pk=pk)
-        return Response(PostViewSerializer(post).data)
+        if entity == 'posts':
+            item = Post.objects.get(pk=pk)
+            serializer = PostViewSerializer
+        elif entity == 'comments':
+            item = Comment.objects.get(pk=pk)
+            serializer = CommentSerializer
+        return Response(serializer(item).data)
 
-    def post(self, request, pk=None, action=None):
-        post = Post.objects.get(pk=pk)
+    def post(self, request, entity=None, pk=None, action=None):
+        if entity == 'posts':
+            item = Post.objects.get(pk=pk)
+            serializer = PostViewSerializer
+        elif entity == 'comments':
+            item = Comment.objects.get(pk=pk)
+            serializer = CommentSerializer
+
         if action == 'like':
-            post.likes += 1
+            item.likes += 1
         elif action == 'dislike':
-            post.dislikes += 1
+            item.dislikes += 1
         else:
             return Response('Received something wrong, please try again')
 
-        post.save()
+        item.save()
 
-        return Response(PostViewSerializer(post).data)
+        return Response(serializer(item).data)
+
+
 
 
 
