@@ -48,11 +48,15 @@ class SetMark(generics.UpdateAPIView):
         else:
             return Response('Received something wrong, please try again')
 
+        if request.session.get(entity[:-1]) == item.id:
+            return Response('You have already marked it')
+
+        request.session[entity[:-1]] = item.id
+
         item.save()
 
         result = serializer(item).data
         result['action'] = entity[:-1] + ' received a ' + action
-
         return Response(result)
 
 
