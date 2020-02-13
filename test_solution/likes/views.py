@@ -3,6 +3,7 @@ from rest_framework import generics, viewsets
 from rest_framework.response import Response
 from .serializers import PostViewSerializer, PostCreateSerializer, CommentSerializer
 from .models import Post, Comment
+import json
 
 class ViewPosts(generics.ListAPIView):
     serializer_class = PostViewSerializer
@@ -49,7 +50,10 @@ class SetMark(generics.UpdateAPIView):
 
         item.save()
 
-        return Response(serializer(item).data)
+        result = serializer(item).data
+        result['action'] = entity[:-1] + ' received a ' + action
+
+        return Response(result)
 
 
 
