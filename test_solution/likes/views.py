@@ -7,7 +7,7 @@ import json
 
 class ViewPosts(generics.ListAPIView):
     serializer_class = PostViewSerializer
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().prefetch_related()
 
     def post(self, request):
         serializer = PostCreateSerializer(data=request.data)
